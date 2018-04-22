@@ -68,7 +68,7 @@ paises=comparaPorNombre(paisesIMasDLimpios(iMasD),
       paisesPIBPerCapitaLimpios(PIB))
 
 #Gráfica.
-fig=plt.figure(figsize=(20,10))
+fig=plt.figure(figsize=(15,7.5))
 ax = fig.add_subplot(111)
 plt.scatter(paises[2],paises[1])
 #Etiqueta los puntos con los nombres su respectivo país.
@@ -89,3 +89,27 @@ plt.title('Research and development expenditure '+
 plt.xlabel(' Index of economic freedom [0-100]')
 plt.ylabel('Research and development expenditure per capita [$USD]')
 plt.savefig('i+d',dpi=400)
+
+
+#Gráfica HD.
+fig=plt.figure(figsize=(40,20))
+ax = fig.add_subplot(111)
+plt.scatter(paises[2],paises[1])
+#Etiqueta los puntos con los nombres su respectivo país.
+for i in range(len(paises[0])):
+    ax.annotate(paises[0][i], xy=(paises[2][i],paises[1][i]),
+                xytext=(paises[2][i],paises[1][i]),
+                arrowprops=dict(facecolor='black'),
+                )
+#Etiqueta a México.
+plt.scatter(paises[2][42],paises[1][42],color='red',label='Mexico')
+ax.annotate(paises[0][42], xy=(paises[2][42],paises[1][42]),
+            xytext=(paises[2][42],paises[1][42]),
+            arrowprops=dict(facecolor='red'),
+            )
+plt.legend(loc=2)
+plt.title('Research and development expenditure '+
+          'vs  Index of economic freedom 2014')
+plt.xlabel(' Index of economic freedom [0-100]')
+plt.ylabel('Research and development expenditure per capita [$USD]')
+plt.savefig('i+dHD',dpi=400)
